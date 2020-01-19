@@ -1,6 +1,16 @@
 ---
 driver:
-  name: vagrant
+  name: ec2
+  region: eu-west-1
+  require_chef_omnibus: true
+  instance_type: t2.micro
+  # deploy to DevopsStudent subnet
+  subnet_ip: subnet-0e9b6138ff1ce18f2
+  associate_public_ip: true
+  # aws_ssh_key_id: harry-li-eng48-first-key
+
+  transport:
+    ssh_key: ~/.ssh/harry-li-eng48-first-key.pem
 
 ## The forwarded_port port feature lets you connect to ports on the VM guest via
 ## localhost on the host.

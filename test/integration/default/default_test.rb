@@ -5,12 +5,19 @@
 
 unless os.windows?
   # This is an example test, replace with your own test.
-  describe user('root'), :skip do
+  describe user('root') do
     it { should exist }
   end
 end
 
 # This is an example test, replace it with your own test.
-describe port(80), :skip do
-  it { should_not be_listening }
+describe port(27017) do
+  it { should be_listening }
+  its('addresses') { should include '0.0.0.0' }
+end
+
+
+describe service 'mongod' do
+  it { should be_running }
+  it { should be_enabled }
 end
